@@ -41,7 +41,7 @@ public:
         if (find(p.first) != end()) return;
         add(p, data, used, elements);
         ++cnt;
-        if (cnt * FILLED > data.size()) {
+        if (cnt * LOAD_FACTOR > data.size()) {
             rebuild();
         }
     }
@@ -185,7 +185,7 @@ public:
 
 private:
     const size_t SZ = 3;
-    const size_t FILLED = 3;
+    const size_t LOAD_FACTOR = 3;
     size_t cnt;
     std::vector<typename std::list<std::pair<const KeyType, ValueType> >::iterator> data;
     std::vector<bool> used;
